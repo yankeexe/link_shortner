@@ -17,7 +17,7 @@ class Header extends Component{
             <div>
                
              <AppBar
-                title="Material-Ui"
+                title="Welcome to Dashboard"
                 onLeftIconButtonClick={() => this.toggleSidebar()}
             />
             
