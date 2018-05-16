@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Header from './Header';
 //import Table from material-ui
 import {
     Table,
@@ -13,6 +14,7 @@ class Body extends Component{
       render(){
         return(
             <div>
+              <Header />
             <Table>
               <TableHeader displaySelectAll={false}>
                 <TableRow displayRowCheckbox={false}>

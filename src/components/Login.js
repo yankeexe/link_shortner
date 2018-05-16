@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card} from 'material-ui/Card';
 import Done from 'material-ui/svg-icons/communication/vpn-key';
+import RebrandlyApi from '../services/RebrandlyApi';
 const style = {
     margin: 12
   };
@@ -74,59 +75,43 @@ onApikeyChange(e){
 }
 
 onSubmit(){
-    fetch('https://api.rebrandly.com/v1/account',
-{
-    headers: {
-        apikey: this.state.apikey
-    }
-})
-.then(response => {
-    if(response.ok) {
-        response.json()
-        .then(data => {
-            console.log(data)
-            if(data.email ===this.state.email){
-                sessionStorage.setItem('apikey',this.state.apikey)
-                sessionStorage.setItem('email',this.state.email)
-                this.props.history.push('/dashboard')
-            }
-            else{
-                alert("Not authorized user")
-            }
-        })
-    }
-  
-    else{
-        alert(response.statusText)
-    } 
+    this.getAccountDetails(this.state.apikey)
+    .then(account => {
+        if(account.email === this.state.email){
+            sessionStorage.setItem('apikey', this.state.apikey)
+            sessionStorage.setItem('email', this.state.email)
+            this.props.history.push('/dashboard')
+        }
+        else{
+            alert("Credential Mismatch")
+        }
     })
-   
+    .catch(error => {
+        alert(error.message)
+    })
+}
+
+getAccountDetails(apikey){
+    return RebrandlyApi.get('/account',{headers: {apikey: apikey}})
 }
 
 //component pachi mount huney cha, tara tyo bhanda agadi k check garney?
     componentWillMount(){
+
         const savedApikey = sessionStorage.getItem("apikey")
 
         if(savedApikey){
-            this.validateApiKey(savedApikey)
+            this.getAccountDetails(savedApikey)
             .then(response => {
                 if(response.ok) {
                     this.props.history.push('/dashboard')
                 }
             })
+            .catch(error => {
+                sessionStorage.removeItem('apikey')
+            })
         }
     }
-    
-    validateApiKey(apikey){
-        return fetch('https://api.rebrandly.com/v1/account',
-        {
-            headers: {
-                apikey: this.state.apikey
-            }
-        })
-    }
 }
-
-
 
 export default Login;

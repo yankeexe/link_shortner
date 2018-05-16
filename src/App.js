@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 //material ui component import
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'; 
-
-import Login from './Components/Login';
-import Dashboard from './Components/Dashboard';
+import Body from './components/Body';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
 import {BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
@@ -15,6 +15,8 @@ class App extends Component{
                     <Switch>
                         <Route path = "/login" component={Login} />
                         <Route path = "/dashboard" component={Dashboard} />
+                        <Route Path = "/table" component = {Body} />
+                        <Route exact path = "/login" component = {Login} />
                     </Switch>
                 </BrowserRouter>
             </MuiThemeProvider> 

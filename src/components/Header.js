@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import { Link } from 'react-router-dom';
+
 
 
 class Header extends Component{
@@ -19,6 +22,7 @@ class Header extends Component{
              <AppBar
                 title="Welcome to Dashboard"
                 onLeftIconButtonClick={() => this.toggleSidebar()}
+                
             />
             
             <Drawer 
@@ -26,6 +30,7 @@ class Header extends Component{
             docked={false}
             onRequestChange={() => this.toggleSidebar()}
             >
+                <MenuItem><Link to = '/table'> Table </Link></MenuItem>
             
             </Drawer>
             </div>
