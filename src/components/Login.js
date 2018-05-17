@@ -70,9 +70,9 @@ class Login extends Component{
         this.setState({email: e.target.value})
     }
 
-onApikeyChange(e){
+    onApikeyChange(e){
     this.setState({apikey: e.target.value})
-}
+    }
 
 onSubmit(){
     this.getAccountDetails(this.state.apikey)
@@ -110,6 +110,9 @@ getAccountDetails(apikey){
             .catch(error => {
                 sessionStorage.removeItem('apikey')
             })
+        } else {
+            this.props.history.push('/login')
+
         }
     }
 }

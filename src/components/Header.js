@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import Icon from './Icon';
 
 
-
 class Header extends Component{
     constructor(props){
         super(props);
