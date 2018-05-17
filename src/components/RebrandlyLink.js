@@ -16,7 +16,7 @@ class RebrandlyLink extends Component {
             <div>
                 <Header />
                 <Table>
-                    <TableHeader>
+                    <TableHeader displaySelectAll={false} >
                         <TableRow>
                             <TableHeaderColumn> Title </TableHeaderColumn>
                             <TableHeaderColumn> Destination </TableHeaderColumn>
@@ -24,7 +24,7 @@ class RebrandlyLink extends Component {
                         </TableRow>
                     </TableHeader>
 
-                    <TableBody>
+                    <TableBody  displayRowCheckbox={false}>
                         {
                             this.state.links.map((link) => {
                                 return (
