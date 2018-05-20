@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Icon from './Icon';
 
 
+
 class Header extends Component{
     constructor(props){
         super(props);
@@ -33,6 +34,7 @@ class Header extends Component{
                
                     <MenuItem><Link to = '/table'> Table </Link></MenuItem>
                     <MenuItem><Link to = '/dashboard'> Dashboard </Link> </MenuItem>
+                    <MenuItem><Link to = '/linksnew'>Create New </Link></MenuItem>
                 
                 </Drawer>
             </div>

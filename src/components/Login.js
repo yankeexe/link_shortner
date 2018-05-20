@@ -113,7 +113,7 @@ getAccountDetails(apikey){
         } else {
             this.props.history.push('/login')
 
-        }
+        } 
     }
 }
 
