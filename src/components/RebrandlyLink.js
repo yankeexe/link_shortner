@@ -3,7 +3,10 @@ import Table from 'material-ui/Table/Table';
 import { TableHeader, TableHeaderColumn, TableRow } from 'material-ui/Table';
 import TableBody from 'material-ui/Table/TableBody';
 import TableRowColumn from 'material-ui/Table/TableRowColumn';
+import EditIcon from 'material-ui/svg-icons/image/edit'; 
 import Header from './Header';
+import IconButton from 'material-ui/IconButton/IconButton';
+import DeleteIcon from 'material-ui/svg-icons/action/delete';
 class RebrandlyLink extends Component {
     constructor(props) {
         super(props);
@@ -32,6 +35,19 @@ class RebrandlyLink extends Component {
                                         <TableRowColumn>{link.title}</TableRowColumn>
                                         <TableRowColumn>{link.destination}</TableRowColumn>
                                         <TableRowColumn> {link.shortUrl}</TableRowColumn>
+                                        <TableRowColumn>  
+                                            {/* Edit Button                                      */}
+                                            <IconButton
+                                            onClick = {() => this.props.history.push(`/links/${link.id}/edit`)} >
+                                            <EditIcon />
+                                            </IconButton>
+                                            {/* Delete Button */}
+                                            <IconButton
+                                                onClick = {() => this.deleteLink(link.id)}>
+                                                <DeleteIcon />
+                                            </IconButton>
+
+                                       </TableRowColumn>
                                     </TableRow>
                                 )
                             })

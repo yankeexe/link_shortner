@@ -59,7 +59,7 @@ class LinkCreate extends Component {
 
     RebrandlyApi.post('/links', {body: data})
     .then(() => {
-      this.props.history.push("/links")+
+      this.props.history.push("/dashboard")
     })
     .catch(err => {
       alert(err.message)

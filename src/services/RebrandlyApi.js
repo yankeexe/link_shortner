@@ -6,7 +6,7 @@ class RebrandlyApi {
         
         return fetch(url, {
             headers: {
-                apikey: params.headers.apikey || sessionStorage.getItem('apikey')
+                apikey: sessionStorage.getItem('apikey') || params.headers.apikey
             }
         })
         .then(response => {
@@ -22,7 +22,6 @@ class RebrandlyApi {
     static post(path, params){
         const url = RebrandlyApi.baseUrl+path;
         const apikey =  sessionStorage.getItem('apikey');
-        debugger
         return fetch(url, {
             method: 'post',
             headers: {
@@ -39,6 +38,11 @@ class RebrandlyApi {
                     return response.json()
                 }
             })
+        }
+
+        static delete(path,params){
+            const url  =  RebrandlyApi.baseUrl + path;
+            const apikey = sessionStorage.getItem('apikey')
         }
 
     }
